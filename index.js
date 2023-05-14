@@ -24,13 +24,16 @@ const pri = async ()=>{
     try{
         await mongoose.connect(db).then(con=>{console.log("connected")})
         await gym.create(JSON.parse(g));
-        gymg = await gym.find()
         console.log(gymg)
 
     }catch(err){console.log("fixed")}
-    finally{await app.get("/gym-info",(req,res)=>{
+    finally{
+        gymg = await gym.find()
+
+        app.get("/gym-info",(req,res)=>{
         res.status(200).json(gymg)
-    })}
+        })
+    }
 }
 
 
@@ -42,7 +45,7 @@ app.get('/',(req,res)=>{
 })
 
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 app.listen(port,()=>{
     console.log(`app running on ${port}`)
 })
