@@ -11,12 +11,11 @@ const db = 'mongodb+srv://yoyo-Py-1:EvnIbpgDA4PgtuFf@cluster0.jp8f5w9.mongodb.ne
 
 const gymschema = new mongoose.Schema({
     id:{type:Number,unique:true},
-    name:String,
-    type:String,
-    desc:String,
-    img:String,
-    vdo:String
-})
+    name:{type:String,unique:true},
+    type:{type:String,unique:true},
+    desc:{type:String,unique:true},
+    img:{type:String,unique:true},
+    vdo:{type:String,unique:true},})
 
 var gym = mongoose.model("gym",gymschema);
 var gymg;
