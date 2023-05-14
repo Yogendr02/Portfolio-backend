@@ -26,11 +26,11 @@ const pri = async ()=>{
         await gym.create(JSON.parse(g));
         gymg = await gym.find()
         console.log(gymg)
-        await app.get("/gym-info",(req,res)=>{
-            res.status(200).json(gymg)
-        })
+
     }catch(err){console.log("fixed")}
-    finally{console.log("ye kya ho gaya")}
+    finally{await app.get("/gym-info",(req,res)=>{
+        res.status(200).json(gymg)
+    })}
 }
 
 
